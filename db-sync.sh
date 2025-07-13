@@ -70,6 +70,9 @@ remote_file="${remote}:${remote_dir}/${filename}"
 
 echo "Retrieving info about the remote"
 rclone about "${remote}:"
+if [[ "$?" -ne 0 ]]; then
+    error "unable to get info about the remote drive"
+fi
 
 if rclone ls "${remote_file}" 2>&1 >/dev/null; then
     if ! rclone check "${remote_dir}" "${local_dir}" --include "${filename}" \
