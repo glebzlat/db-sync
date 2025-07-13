@@ -1,5 +1,5 @@
 # DB-sync config file.
-.
+
 # Where the KeePassXC database file is.
 local_file=my-path-to/database.kdbx
 
