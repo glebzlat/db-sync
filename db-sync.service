@@ -1,0 +1,9 @@
+[Unit]
+Description=KeePassXC Database Sync
+
+[Service]
+Type=simple
+ExecStart=%h/.local/share/db-sync/db-sync.sh
+
+[Install]
+WantedBy=default.target

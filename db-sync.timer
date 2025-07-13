@@ -1,0 +1,9 @@
+[Unit]
+Description=Run KeePassXC Database sync periodically
+
+[Timer]
+OnCalendar=Sun
+Persistent=true
+
+[Install]
+WantedBy=timers.target

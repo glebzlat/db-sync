@@ -1,0 +1,20 @@
+# DB-sync config file.
+.
+# Where the KeePassXC database file is.
+local_file=my-path-to/database.kdbx
+
+# My remote drive name.
+remote=my-drive
+
+# Where to place the mirror database. It will have the same name as the local
+# file, e.g. backup/database.kdbx.
+remote_dir=backup
+
+# Backup file timestamp pattern. Read man date for syntax specification.
+backup_pattern="keepass_%Y-%m-%dT%H:%M.kdbx"
+
+# File to read the password from. Must be in the same directory as this file.
+password_file=password
+
+# Where to store timestamped backups.
+backup_dir=backup/backups
