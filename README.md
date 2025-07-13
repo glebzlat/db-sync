@@ -29,6 +29,19 @@ chmod 700 ${HOME}/.config/db-sync
 The script will automatically set permissions `700` to files in the config
 directory.
 
+## Prerequisites
+
+The script uses [rclone](https://rclone.org) to interact with the cloud and
+[keepassxc-cli](https://keepassxc.org) to merge the database. Other dependencies
+include:
+
+- Linux-based OS
+- Systemd
+- Bash
+- GNU coreutils
+- grep
+- GNU Make (only for installation/setup)
+
 ## Installation
 
 Run
