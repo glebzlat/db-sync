@@ -72,6 +72,50 @@ To uninstall the files:
 make uninstall
 ```
 
+### As a separate user
+
+Setup special user to separate the password from the main user.
+
+```sh
+# Create the user and set the password.
+sudo useradd -m -U sync
+sudo passwd sync
+
+# Allow the user to access the database.
+sudo chgrp sync <path-to-database>
+chmod 770 <path-to-database>
+
+# Add the user to the sync group.
+sudo usermod -a -G ${USER} sync
+
+# Enable lingering (allows to start systemd user services on boot).
+sudo loginctl enable-linger sync
+
+# Switch to the sync user.
+sudo su sync
+
+# Add the backup drive.
+rclone config
+
+git clone https://github.com/glebzlat/db-sync.git
+cd db-sync
+
+# Install the files and setup the config.
+make install
+$EDITOR ~/.config/db-sync/config
+$EDITOR ~/.config/db-sync/password
+
+# Set the environment variables to avoid the error:
+#   Failed to connect to user scope bus via local transport: Permission denied
+export XDG_RUNTIME_DIR=/run/user/$(id -u)
+export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$(id -u)/bus
+
+make start
+```
+
+That way, even if you leave your PC unlocked, there will be no access to your
+password file.
+
 ## License
 
 Licensed under [MIT License](./LICENSE)
