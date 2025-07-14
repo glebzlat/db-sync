@@ -26,7 +26,7 @@ ensure_var_set() {
 fix_permissions() {
     local file="$1"
     local perm=$(stat --format="%a" "${file}")
-    if [[ "${perm}" != 700 ]]; then
+    if [[ "${perm}" != "700" ]]; then
         chmod 700 "${file}"
     fi
 }
@@ -34,7 +34,7 @@ fix_permissions() {
 ensure_command rclone
 ensure_command keepassxc-cli
 
-if [[ "$(id -u)" = 0 ]]; then
+if [[ "$(id -u)" = "0" ]]; then
     error "the script must be run as user"
 fi
 
@@ -103,4 +103,4 @@ if rclone ls "${remote_file}" 2>&1 >/dev/null; then
 fi
 
 echo "Save the current database"
-rclone copyto "${local_file}" "${remote}:${remote_file}"
+rclone copyto "${local_file}" "${remote_file}"
