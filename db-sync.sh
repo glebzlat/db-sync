@@ -75,7 +75,7 @@ if [[ "$?" -ne 0 ]]; then
 fi
 
 if rclone ls "${remote_file}" 2>&1 >/dev/null; then
-    if ! rclone check "${remote_dir}" "${local_dir}" --include "${filename}" \
+    if rclone check "${remote_dir}" "${local_dir}" --include "${filename}" \
             --combined 2>&1 | grep -q -E '^='; then
         echo "No differences between remote and local databases, exiting"
         exit 0
