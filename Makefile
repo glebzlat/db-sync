@@ -19,6 +19,7 @@ install: ${SRC}
 	chmod 700 ${INSTALL_DIR}
 	cp config.example ${CONFIG_DIR}/config
 	cp db-sync.sh ${INSTALL_DIR}
+	chmod 700 ${INSTALL_DIR}/db-sync.sh
 	cp ${SRC} ${SYSTEMD_DIR}
 
 uninstall:
